@@ -16,6 +16,10 @@ class Student(models.Model):
     school = models.ForeignKey('School', on_delete=models.SET_NULL, null=True, blank=True)
     books = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True, blank=True)
 
+    def __str__(self):
+        """String for representing the Student object."""
+        return f'{self.first_name} {self.last_name}'
+
 
 class School(models.Model):
     region_id = models.IntegerField(help_text='The region id of the school')
@@ -25,9 +29,17 @@ class School(models.Model):
     phone = models.CharField(max_length=8, help_text='The phone number associated with the school')
     address2 = models.CharField(max_length=100, help_text='The 2nd address line of the school')
 
+    def __str__(self):
+        """String for representing the School object."""
+        return self.school
+
 
 class Book(models.Model):
     title = models.CharField(max_length=50, primary_key=True, help_text='The title of the book')
     author_name = models.CharField(max_length=50, blank=True, null=True, help_text='The name of the author of the book')
     date_of_publication = models.DateField(null=True, blank=True, help_text='The date of publication of the book')
     number_of_pages = models.IntegerField(help_text='The number of pages in the book')
+
+    def __str__(self):
+        """String for representing the Book object."""
+        return self.title
