@@ -7,6 +7,6 @@ class StudentAdmin(admin.ModelAdmin):
     readonly_fields = ('id',)
 
 
-admin.site.register(StudentAdmin, Student)
+admin.site.register(Student, StudentAdmin)
 admin.site.register(School)
 admin.site.register(Book)
