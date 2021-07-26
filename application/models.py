@@ -18,7 +18,7 @@ class Student(models.Model):
 
 
 class School(models.Model):
-    region_id = models.IntegerField(max_length=3, help_text='The region id of the school')
+    region_id = models.IntegerField(help_text='The region id of the school')
     school = models.CharField(max_length=50, primary_key=True, help_text='The name of the school')
     email = models.CharField(max_length=30, help_text='The email id associated with the school')
     principal = models.CharField(max_length=40, help_text='The name of the principal of the school')
@@ -30,4 +30,4 @@ class Book(models.Model):
     title = models.CharField(max_length=50, primary_key=True, help_text='The title of the book')
     author_name = models.CharField(max_length=50, blank=True, null=True, help_text='The name of the author of the book')
     date_of_publication = models.DateField(null=True, blank=True, help_text='The date of publication of the book')
-    number_of_pages = models.IntegerField(max_length=10, help_text='The number of pages in the book')
+    number_of_pages = models.IntegerField(help_text='The number of pages in the book')
