@@ -17,10 +17,12 @@ class StudentListView(generic.ListView):
 
 def student_detail_view(request, primary_key):
     student = get_object_or_404(Student, pk=primary_key)
-    school = get_object_or_404(School, student.school)
-    book = get_object_or_404(Book, student.books)
+    try:
+        school = School.objects.get(student.school)
+        book = Book.objects.get(student.books)
+
+    except School.DoesNotExist or Book.DoesNotExist:
+        pass
+
     return render(request, 'application/student_detail.html', context={'student': student, 'school': school,
                                                                        'book': book})
-
-
-
