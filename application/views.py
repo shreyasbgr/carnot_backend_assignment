@@ -15,14 +15,11 @@ class StudentListView(generic.ListView):
     model = Student
 
 
-def student_detail_view(request, primary_key):
-    student = get_object_or_404(Student, pk=primary_key)
-    try:
-        school = School.objects.get(student.school)
-        book = Book.objects.get(student.books)
+class StudentDetailView(generic.DetailView):
+    model = Student
 
-    except School.DoesNotExist or Book.DoesNotExist:
-        pass
-
-    return render(request, 'application/student_detail.html', context={'student': student, 'school': school,
-                                                                       'book': book})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['school'] = School.objects.get(context['student'].school)
+        context['book'] = Book.objects.get(context['student'].books)
+        return context
