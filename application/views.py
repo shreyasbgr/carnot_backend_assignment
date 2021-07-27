@@ -13,3 +13,6 @@ def hello_application(request):
 class StudentListView(generic.ListView):
     model = Student
 
+
+class StudentDetailView(generic.DetailView):
+    model = Student
