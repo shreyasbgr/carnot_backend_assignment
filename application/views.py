@@ -39,19 +39,22 @@ def student_search_form(request):
     if request.method == "GET":
         form = StudentSearchForm()
         try:
-            student = Student.objects.get(id=request.GET['student_id'])
+            if 'student_id' in request.GET:
+                student = Student.objects.get(id=request.GET['student_id'])
 
         except Student.DoesNotExist:
             pass
 
         try:
-            school = School.objects.get(school=student.school)
+            if student:
+                school = School.objects.get(school=student.school)
 
         except School.DoesNotExist:
             pass
 
         try:
-            book = Book.objects.get(title=student.books)
+            if student:
+                book = Book.objects.get(title=student.books)
 
         except Book.DoesNotExist:
             pass
