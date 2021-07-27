@@ -46,14 +46,14 @@ def student_search_form(request):
             pass
 
         try:
-            if student:
+            if 'student_id' in request.GET:
                 school = School.objects.get(school=student.school)
 
         except School.DoesNotExist:
             pass
 
         try:
-            if student:
+            if 'student_id' in request.GET:
                 book = Book.objects.get(title=student.books)
 
         except Book.DoesNotExist:
