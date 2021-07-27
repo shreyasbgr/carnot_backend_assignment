@@ -8,4 +8,14 @@
         </table>
         <input type="submit" value="Search" />
     </form>
+
+    <h2>Student Information:</h2>
+    <p><strong>Name: </strong>{{ student.first_name }} {{student.last_name}}</p>
+    <p><strong>ID: </strong> {{ student.id }}</p>
+    <p><strong>Email: </strong> {{ student.email }}</p>
+    <p><strong>Gender: </strong> {{ student.gender }}</p>
+    <p><strong>School: </strong> {{ student.school }}</p>
+    <p><strong>School Phone: </strong> {{ school.phone }}</p>
+    <p><strong>Books: </strong> {{ student.books }}</p>
+    <p><strong>Number of pages read: </strong> {{ book.number_of_pages }}</p>
 {% endblock %}

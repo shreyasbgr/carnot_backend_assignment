@@ -38,8 +38,28 @@ class StudentDetailView(generic.DetailView):
 def student_search_form(request):
     if request.method == "GET":
         form = StudentSearchForm()
+        try:
+            student = Student.objects.get(id=request.GET['student_id'])
+
+        except Student.DoesNotExist:
+            pass
+
+        try:
+            school = School.objects.get(school=student.school)
+
+        except School.DoesNotExist:
+            pass
+
+        try:
+            book = Book.objects.get(title=student.books)
+
+        except Book.DoesNotExist:
+            pass
 
     context = {
-        'form': form
+        'form': form,
+        'student': student,
+        'school': school,
+        'book': book,
     }
     return render(request, 'application/student_search_form.html', context)
