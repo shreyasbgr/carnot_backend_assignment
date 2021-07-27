@@ -20,6 +20,15 @@ class StudentDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['school'] = School.objects.get(school=context['student'].school)
-        context['book'] = Book.objects.get(title=context['student'].books)
+        try:
+            context['school'] = School.objects.get(school=context['student'].school)
+
+        except School.DoesNotExist:
+            pass
+
+        try:
+            context['book'] = Book.objects.get(title=context['student'].books)
+
+        except Book.DoesNotExist:
+            pass
         return context
