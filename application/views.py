@@ -11,6 +11,10 @@ def hello_application(request):
     return HttpResponse('Hello from the application!')
 
 
+class StudentListView(generic.ListView):
+    model = Student
+
+
 def student_detail_view(request, primary_key):
     student = get_object_or_404(Student, pk=primary_key)
     school = get_object_or_404(School, student.school)
@@ -19,5 +23,4 @@ def student_detail_view(request, primary_key):
                                                                        'book': book})
 
 
-class StudentDetailView(generic.DetailView):
-    model = Student
+
