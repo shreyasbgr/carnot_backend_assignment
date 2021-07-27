@@ -41,24 +41,28 @@ def student_search_form(request):
         context = {'form': form}
 
         try:
-            if 'student_id' in request.GET:
+            if request.GET['student_id'] is not None:
                 student = Student.objects.get(id=request.GET['student_id'])
+                context['student'] = student
+
+            elif request.GET['student_name'] is not None:
+                student = Student.objects.filter(first_name=request.GET['student_name'])
                 context['student'] = student
 
         except Student.DoesNotExist:
             pass
 
         try:
-            if 'student_id' in request.GET:
-                school = School.objects.get(school=student.school)
+            if context['student'] is not None:
+                school = School.objects.get(school=context['student'].school)
                 context['school'] = school
 
         except School.DoesNotExist:
             pass
 
         try:
-            if 'student_id' in request.GET:
-                book = Book.objects.get(title=student.books)
+            if context['student'] is not None:
+                book = Book.objects.get(title=context['student'].books)
                 context['book'] = book
 
         except Book.DoesNotExist:
