@@ -20,6 +20,6 @@ class StudentDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['school'] = School.objects.get(context['student'].school)
-        context['book'] = Book.objects.get(context['student'].books)
+        context['school'] = School.objects.get(school=context['student'].school)
+        context['book'] = Book.objects.get(title=context['student'].books)
         return context
