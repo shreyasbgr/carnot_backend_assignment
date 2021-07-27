@@ -41,7 +41,7 @@ def student_search_form(request):
         context = {'form': form}
         request_params_included = False
         try:
-            if 'student_id' in request.GET and request.GET['student_id'] is not None:
+            if 'student_id' in request.GET and request.GET['student_id'] is not 0:
                 student = Student.objects.get(id=request.GET['student_id'])
                 context['student'] = student
                 request_params_included = True
