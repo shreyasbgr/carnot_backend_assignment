@@ -4,6 +4,7 @@ from django.views import generic
 from django.shortcuts import get_object_or_404
 
 from .models import Student, School, Book
+from .forms import StudentSearchForm
 
 
 # Create your views here.
@@ -32,3 +33,13 @@ class StudentDetailView(generic.DetailView):
         except Book.DoesNotExist:
             pass
         return context
+
+
+def student_search_form(request):
+    if request.method == "GET":
+        form = StudentSearchForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'application/student_search_form.html', context)

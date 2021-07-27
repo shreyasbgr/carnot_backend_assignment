@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Student Search Form</h1>
+    <form action="" method="get">
+        <ul>
+        {{ form.as_ul }}
+        </ul>
+        <input type="submit" value="Search" />
+    </form>
+{% endblock %}
