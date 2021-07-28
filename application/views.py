@@ -8,8 +8,8 @@ from .forms import StudentSearchForm
 
 
 # Create your views here.
-def hello_application(request):
-    return HttpResponse('Hello from the application!')
+def application_index(request):
+    return render(request, 'application/application_index.html')
 
 
 class StudentListView(generic.ListView):
