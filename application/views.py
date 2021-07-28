@@ -70,4 +70,5 @@ def student_search_form(request):
         except Book.DoesNotExist:
             pass
 
+        context['request_params_included'] = request_params_included
     return render(request, 'application/student_search_form.html', context)
