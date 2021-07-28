@@ -9,9 +9,9 @@
     <button type="submit" value="Search" style="margin-left:150px; margin-top:20px; margin-bottom:20px;">Search</button>
 </form>
 {% if request_params_included%}
-<div style="display: none;">
+<div style="display: block;">
     {% else %}
-    <div style="display: block;">
+    <div style="display: none;">
         {% endif %}
         <h2>Student Information:</h2>
         <p><strong>Name: </strong>{{ student.first_name }} {{student.last_name}}</p>
